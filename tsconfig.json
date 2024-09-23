@@ -3,12 +3,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-
-    "baseUrl": "./",
-    "paths": {
-      "@helpers/*": ["src/app/helpers"]
-    },
-
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,

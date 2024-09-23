@@ -1,4 +1,4 @@
-import { sleep } from "@helpers/*";
+import { sleep } from "../../../helpers";
 import { GitHubLabel } from "../interfaces";
 
 export const getLabels = async(): Promise<GitHubLabel[]> => {
