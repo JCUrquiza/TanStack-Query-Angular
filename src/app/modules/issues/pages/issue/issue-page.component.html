@@ -1,1 +1,13 @@
 <h1>Issue number: <small>{{ issueNumber() }}</small></h1>
+<a routerLink="/">Regresar</a>
+
+
+@if ( issueQuery.data() === undefined ) {
+  <p>Cargando Issue</p>
+} @else {
+
+  <issue-comment [issue]="issueQuery.data()!" />
+
+}
+
+
