@@ -10,4 +10,17 @@
 
 }
 
+<!-- Comments -->
+@if(issueCommentsQuery.isLoading()) {
+  <p>Cargando comentarios</p>
+} @else {
+  <!-- IssueCommentsQuery -->
+  @for (comment of issueCommentsQuery.data(); track comment.id) {
+    <issue-comment [issue]="comment" />
+  } @empty {
+    <p>No hay comentarios que mostrar</p>
+  }
+}
+
+
 
