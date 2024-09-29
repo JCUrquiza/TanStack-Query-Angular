@@ -24,7 +24,7 @@ export const getIssueCommentsByNumber = async( issueNumber: string ): Promise<Gi
 
     return issueComments;
   } catch (error) {
-    throw "Can't load comments of the issue";
+    throw `Can't load comments of the issue number: ${ issueNumber }`;
   }
 
 }
