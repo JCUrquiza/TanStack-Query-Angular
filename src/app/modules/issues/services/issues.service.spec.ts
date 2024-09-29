@@ -3,6 +3,8 @@ import { provideAngularQuery, QueryClient } from '@tanstack/angular-query-experi
 import { IssuesService } from './issues.service';
 import { State } from '../interfaces';
 
+const labelAccessibility = 'Accessibility';
+
 describe(`IssuesService`, () => {
 
   let service: IssuesService;
@@ -45,6 +47,26 @@ describe(`IssuesService`, () => {
 
     data!.forEach(issue => {
       expect(issue.state).toBe(State.Closed);
+    });
+  });
+
+  it('should set selectedLabels', () => {
+    service.toggleLabel(labelAccessibility);
+    expect(service.selectedLabels().has(labelAccessibility)).toBeTruthy();
+
+    service.toggleLabel(labelAccessibility);
+    expect(service.selectedLabels().has(labelAccessibility)).toBeFalsy();
+  });
+
+  it('should set selectedLabels and get issues by label', async() => {
+    service.toggleLabel(labelAccessibility);
+    expect(service.selectedLabels().has(labelAccessibility)).toBeTruthy();
+
+    const { data } = await service.issuesQuery.refetch();
+
+    data?.forEach(issue => {
+      const hasLabel = issue.labels.some((l) => l.name === labelAccessibility);
+      expect(hasLabel).toBeTrue();
     });
   });
 
