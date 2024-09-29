@@ -1,5 +1,5 @@
 import { environment } from "../../../../environments/environment.development";
-import { sleep } from "../../../helpers";
+// import { sleep } from "../../../helpers";
 import { GitHubIssue } from "../interfaces";
 
 const BASEURL = environment.baseUrl;
@@ -7,7 +7,7 @@ const GITHUB_TOKEN = environment.gitHubToken;
 
 export const getIssueByNumber = async( issueNumber: string ): Promise<GitHubIssue> => {
 
-  await sleep(1500);
+  // await sleep(1500);
 
   try {
 
@@ -24,7 +24,7 @@ export const getIssueByNumber = async( issueNumber: string ): Promise<GitHubIssu
 
     return issue;
   } catch (error) {
-    throw "Can't load the issue";
+    throw `Can't load the issue ${ issueNumber }`;
   }
 
 }
